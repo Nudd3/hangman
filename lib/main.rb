@@ -7,16 +7,4 @@ include Messages
 include Datahandler
 require 'yaml'
 
-print welcome_message
-#input = gets.chomp
-
-#until %w[1 2].include? input
-#  print 'Make a choice: '
-#  input = gets.chomp
-#end
-
-#input == '1' ? Hangman.new : load_game
-
-g = Hangman.new
-g.load_game
-g.play
+Hangman.new

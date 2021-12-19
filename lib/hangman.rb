@@ -13,14 +13,31 @@ class Hangman
   include Datahandler
 
   def initialize
-    @word = choose_word
-    @word_array = Array.new(@word.length, '_')
-    @used_letters = {
-      correct: [],
-      wrong: []
-    }
-    @guess_ctr = 10
-    #play
+    choice = start
+    if choice == '1'
+      @word = choose_word
+      @word_array = Array.new(@word.length, '_')
+      @used_letters = {
+        correct: [],
+        wrong: []
+      }
+      @guess_ctr = 10
+      play
+    else
+      load_game
+      play
+    end
+  end
+
+  def start
+    print welcome_message
+    input = gets.chomp
+
+    until %w[1 2].include? input
+      print 'Make a choice (1/2): '
+      input = gets.chomp
+    end
+    input
   end
 
   def play

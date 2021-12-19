@@ -4,8 +4,8 @@ require_relative 'hangman'
 module Datahandler
   def save_game
     Dir.mkdir 'saved_games' unless Dir.exist? 'saved_games'
-    filename = "#{@word_array.join}_game.yaml"
-    File.open("saved_games/#{filename}", 'w') { _1.write save_to_yaml }
+    @filename = "#{@word_array.join}_game.yaml"
+    File.open("saved_games/#{@filename}", 'w') { _1.write save_to_yaml }
     puts saved_message
   end
 
