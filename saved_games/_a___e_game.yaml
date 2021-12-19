@@ -1,0 +1,16 @@
+---
+:word: dative
+:progress:
+- _
+- a
+- _
+- _
+- _
+- e
+:guessed_letters:
+  :correct:
+  - a
+  - e
+  :wrong:
+  - b
+:guess_ct: 9

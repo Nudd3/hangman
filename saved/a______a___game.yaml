@@ -1,0 +1,18 @@
+---
+:word: asseverate
+:progress:
+- a
+- _
+- _
+- _
+- _
+- _
+- _
+- a
+- _
+- _
+:guessed_letters:
+  :correct:
+  - a
+  :wrong: []
+:guess_ct: 10

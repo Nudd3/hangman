@@ -1,0 +1,26 @@
+---
+word:
+- p
+- r
+- e
+- c
+- a
+- t
+- o
+- r
+- y
+progress:
+- _
+- _
+- _
+- _
+- a
+- _
+- _
+- _
+- _
+guessed_letters:
+  :correct:
+  - a
+  :wrong: []
+guess_ct: 10
