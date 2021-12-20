@@ -1,5 +1,7 @@
 # frozen_string_literal: false
+
 require_relative 'hangman'
+require 'yaml'
 # asd
 module Datahandler
   def save_game
@@ -21,7 +23,7 @@ module Datahandler
   def load_game
     name = choose_game
 
-    saved = File.open(File.join("saved_games/", name), 'r')
+    saved = File.open(File.join('saved_games/', name), 'r')
 
     loaded_game = YAML.load(saved)
     @word = loaded_game[:word]
@@ -29,19 +31,19 @@ module Datahandler
     @used_letters = loaded_game[:guessed_letters]
     @guess_ctr = loaded_game[:guess_ct]
     saved.close
+
+    File.delete("saved_games/#{name}")
   end
 
   def choose_game
-    find_saved_games.each_with_index do |v, i|
-      puts "#{i + 1}. #{v}"
-    end
-    puts 'Choose the number of the game to load: '
+    saved_games = find_saved_games
+    puts load_game_message
     input = gets.chomp
-    until %w[1 2].include? input
-      puts 'Choose the number of the game to load: '
+    until input.to_i.between?(1, saved_games.length)
+      puts load_game_message
       input = gets.chomp
     end
-    find_saved_games[input.to_i - 1]
+    saved_games[input.to_i - 1]
   end
 
   def find_saved_games
@@ -49,7 +51,9 @@ module Datahandler
     Dir.entries('saved_games').each do |file|
       files << file if file.include?('yaml')
     end
-
+    files.each_with_index do |v, i|
+      puts "#{i + 1}. #{v}"
+    end
     files
   end
 end

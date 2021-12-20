@@ -1,21 +1,18 @@
 ---
-:word: surmount
+:word: scatterer
 :progress:
 - _
 - _
-- r
+- a
 - _
 - _
+- e
 - _
-- _
+- e
 - _
 :guessed_letters:
   :correct:
-  - r
-  :wrong:
   - a
-  - b
   - e
-  - g
-  - f
-:guess_ct: 5
+  :wrong: []
+:guess_ct: 10

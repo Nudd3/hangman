@@ -39,6 +39,10 @@ module Messages
     "Game was saved as #{@filename}"
   end
 
+  def load_game_message
+    'Choose the number of the game to load: '
+  end
+
   def turn_message
     "1. Guess \n2. Save Game"
   end

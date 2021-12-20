@@ -14,19 +14,21 @@ class Hangman
 
   def initialize
     choice = start
-    if choice == '1'
-      @word = choose_word
-      @word_array = Array.new(@word.length, '_')
-      @used_letters = {
-        correct: [],
-        wrong: []
-      }
-      @guess_ctr = 10
-      play
-    else
-      load_game
-      play
-    end
+    choice == '1' ? new_game : load_game
+
+    play
+  end
+
+  private
+
+  def new_game
+    @word = choose_word
+    @word_array = Array.new(@word.length, '_')
+    @used_letters = {
+      correct: [],
+      wrong: []
+    }
+    @guess_ctr = 10
   end
 
   def start
