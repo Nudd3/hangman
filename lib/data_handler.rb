@@ -2,7 +2,8 @@
 
 require_relative 'hangman'
 require 'yaml'
-# asd
+
+# Module for saving and loading games
 module Datahandler
   def save_game
     Dir.mkdir 'saved_games' unless Dir.exist? 'saved_games'

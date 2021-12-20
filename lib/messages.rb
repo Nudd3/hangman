@@ -1,13 +1,14 @@
 # frozen_string_literal: false
 
 require_relative 'text_decoration'
+
 # module containing the different text messages used in hangman
 module Messages
   include TextDecoration
 
   def welcome_message
     "
-      Welcome to this command line version of the classic game hangmang
+      Welcome to this command line version of the classic game hangman
 
       1. New Game
 

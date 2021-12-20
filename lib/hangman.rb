@@ -4,7 +4,7 @@ require_relative 'messages'
 require_relative 'text_decoration'
 require_relative 'data_handler'
 
-# class playing hangman
+# Class for playing hangman
 class Hangman
   attr_accessor :word, :word_array, :used_letters, :guess_ctr
 
