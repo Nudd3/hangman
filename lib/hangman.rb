@@ -7,11 +7,18 @@ require_relative 'display'
 class Hangman
   include FileManager
   include Display
-  
+
   def initialize
-    choose_word
-    @guesses = 6
-    play
+    select_mode == '1' ? new_game : load_game
+    # play
+  end
+
+  def select_mode
+    loop do
+      # promt_mode_selection
+      input = gets.chomp
+      return input if %w[1 2].include?(input)
+    end
   end
 
   def choose_word
@@ -21,8 +28,9 @@ class Hangman
   end
 
   def play
-    loop do
-      promt_guess_letter
+    until @guesses.zero?
+      puts 'hello there sir!'
+      @guesses -= 1
     end
   end
 end
