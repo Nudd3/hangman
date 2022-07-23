@@ -25,6 +25,7 @@ class Hangman
 
   def new_game
     @guesses = 10
+    @guessed_letters = {}
     choose_word
   end
 
@@ -48,10 +49,20 @@ class Hangman
     loop do
       print promt_guess(@guesses)
       input = gets.chomp.downcase
-      return input if input.match(/^[a-z]$/)
 
-      print bad_guess_error
+      return input if guess_valid?(input)
     end
+  end
+
+  def guess_valid?(guess)
+    if @guesses['correct'].include?(guess) || @guesses['wrong'].include?(guess)
+      print bad_guess_error('taken')
+      return false
+    elsif !input.match(/^[a-z]$/)
+      print bad_guess_error('letter')
+      return false
+    end
+    true
   end
 end
 
