@@ -2,23 +2,30 @@
 
 require_relative 'file_manager'
 require_relative 'display'
+require_relative 'messages'
 
 # Class for the game
 class Hangman
   include FileManager
   include Display
+  include Messages
 
   def initialize
     select_mode == '1' ? new_game : load_game
-    # play
+    play
   end
 
   def select_mode
     loop do
-      # promt_mode_selection
+      print promt_mode_selection
       input = gets.chomp
       return input if %w[1 2].include?(input)
     end
+  end
+
+  def new_game
+    @guesses = 10
+    choose_word
   end
 
   def choose_word
@@ -27,10 +34,23 @@ class Hangman
     end.sample
   end
 
+  def load_game; end
+
   def play
     until @guesses.zero?
-      puts 'hello there sir!'
+      guess = make_guess
+      puts "Guess class: #{guess.class}"
       @guesses -= 1
+    end
+  end
+
+  def make_guess
+    loop do
+      print promt_guess(@guesses)
+      input = gets.chomp.downcase
+      return input if input.match(/^[a-z]$/)
+
+      print bad_guess_error
     end
   end
 end

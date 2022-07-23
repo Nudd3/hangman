@@ -31,11 +31,3 @@ module Display
     "\e[32m#{letter}\e[0m"
   end
 end
-
-include Display
-a = {
-  'correct' => %w[a b c e f],
-  'wrong' => %w[x c z b]
-}
-
-display_guessed_letters(a)
