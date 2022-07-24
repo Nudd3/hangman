@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+require 'json'
 
 require_relative 'file_manager'
 require_relative 'display'
@@ -44,13 +45,6 @@ class Hangman
     puts "  #{@word}"
     puts "  #{@word_array}"
   end
-
-  def save_game(game)
-    # save game
-    # puts goodbye_message
-  end
-
-  def load_game; end
 
   # rubocop:disable Metrics
   def play
@@ -118,6 +112,24 @@ class Hangman
     else
       false
     end
+  end
+
+  def load_game; end
+
+  def save_game()
+    filename = "#{@word_array.join}_game.txt"
+    Dir.mkdir('saved_games') unless File.exist?('saved_games')
+    File.open("saved_games/#{filename}", 'w') { |f| f.write save_to_json}
+    puts goodbye_message(filename)
+  end
+
+  def save_to_json
+    JSON.dump(
+      word: @word,
+      word_array: @word_array,
+      guessed_letters: @guessed_letters,
+      guesses: @guesses
+    )
   end
 end
 

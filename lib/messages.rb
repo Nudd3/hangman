@@ -18,6 +18,14 @@ module Messages
     "
   end
 
+  def goodbye_message(filename)
+    "
+  Your game is now saved as #{filename}. You will be able to load it back
+  up the next time you start the game.
+  Thanks for playing!
+    "
+  end
+
   def winner_message
     "
   \n\nCongratulations! You figured the word out!
