@@ -27,7 +27,7 @@ class Hangman
   end
 
   def new_game
-    @guesses = 1
+    @guesses = 6
     @guessed_letters = {
       'correct' => [],
       'wrong' => []
@@ -56,12 +56,25 @@ class Hangman
   def play
     until game_over?
       promt_turn_selection
-      
-
-
+      if select_turn == '1'
+        guess = make_guess
+        compare_guess(guess)
+        display_info(guessed_letters, word_array)
+      else
+        save_game
+        break
+      end
     end
   end
   # rubocop:enable Metrics
+
+  def select_turn
+    loop do
+      print promt_turn_selection
+      input = gets.chomp
+      return input if %w[1 2].include?(input)
+    end
+  end
 
   def make_guess
     loop do
@@ -83,7 +96,7 @@ class Hangman
     true
   end
 
-  def check_guess(guess)
+  def compare_guess(guess)
     if @word.include?(guess)
       @guessed_letters['correct'] << guess
       @word.each_with_index do |c, i|
@@ -91,7 +104,7 @@ class Hangman
       end
     else
       @guessed_letters['wrong'] << guess
-      @guesses += 1
+      @guesses -= 1
     end
   end
 
@@ -99,7 +112,7 @@ class Hangman
     if @word_array == @word
       puts winner_message
       true
-    elsif @guesses == 7
+    elsif @guesses.zero?
       puts loser_message
       true
     else

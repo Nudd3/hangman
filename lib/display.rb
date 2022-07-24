@@ -4,8 +4,9 @@
 # for the player
 module Display
   def display_info(letters, word_array)
+    puts "\n"
     display_guessed_letters(letters)
-    puts "\n\n"
+    puts "\n"
     puts "  #{word_array.join(' ')}"
   end
 

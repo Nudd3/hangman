@@ -51,7 +51,8 @@ module Messages
 
   def promt_guess(guess_nr)
     "
-  Make guess ##{guess_nr}  => "
+  Wrong guesses left: #{guess_nr}
+  Make guess => "
   end
 
   # Errors
