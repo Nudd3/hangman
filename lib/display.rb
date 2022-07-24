@@ -3,12 +3,10 @@
 # module containing methods for displaying info
 # for the player
 module Display
-
   def display_info(letters, word_array)
     display_guessed_letters(letters)
     puts "\n\n"
     puts "  #{word_array.join(' ')}"
-    
   end
 
   def display_guessed_letters(letters)
