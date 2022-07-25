@@ -28,7 +28,7 @@ module Messages
 
   def winner_message
     "
-  \n\nCongratulations! You figured the word out!
+  \n\n  Congratulations! You figured the word out!
     "
   end
 

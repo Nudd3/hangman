@@ -1,4 +1,5 @@
 # frozen_string_literal: false
+
 require 'json'
 
 require_relative 'file_manager'
@@ -11,8 +12,6 @@ class Hangman
   include Display
   include Messages
 
-  attr_accessor :guesses, :guessed_letters, :word, :word_array
-
   def initialize
     puts welcome_message
     if select_mode == '1'
@@ -21,7 +20,6 @@ class Hangman
       load_game
       display_info(@guessed_letters, @word_array)
     end
-    # select_mode == '1' ? new_game : load_game
     play
   end
 
@@ -54,7 +52,6 @@ class Hangman
     @word_array = Array.new(@word.length, '_')
   end
 
-  # rubocop:disable Metrics
   def play
     until game_over?
       promt_turn_selection
@@ -68,7 +65,6 @@ class Hangman
       end
     end
   end
-  # rubocop:enable Metrics
 
   def select_turn
     loop do
