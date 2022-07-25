@@ -4,15 +4,15 @@
 # for the player
 module Display
   def display_info(letters, word_array)
-    puts "\n"
+    puts "\n "
     display_guessed_letters(letters)
     puts "\n"
     puts "  #{word_array.join(' ')}"
   end
 
   def display_guessed_letters(letters)
-    correct = letters['correct']
-    wrong = letters['wrong']
+    correct = letters[:correct]
+    wrong = letters[:wrong]
     correct.each do |letter|
       print "  #{green(letter)}"
     end

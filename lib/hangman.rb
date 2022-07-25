@@ -30,8 +30,8 @@ class Hangman
   def new_game
     @guesses = 6
     @guessed_letters = {
-      'correct' => [],
-      'wrong' => []
+      correct: [],
+      wrong: []
     }
     choose_word
   end
@@ -80,7 +80,7 @@ class Hangman
   end
 
   def guess_valid?(guess)
-    if @guessed_letters['correct'].include?(guess) || @guessed_letters['wrong'].include?(guess)
+    if @guessed_letters[:correct].include?(guess) || @guessed_letters[:wrong].include?(guess)
       print bad_guess_error('taken')
       return false
     elsif !guess.match(/^[a-z]$/)
@@ -92,12 +92,12 @@ class Hangman
 
   def compare_guess(guess)
     if @word.include?(guess)
-      @guessed_letters['correct'] << guess
+      @guessed_letters[:correct] << guess
       @word.each_with_index do |c, i|
         @word_array[i] = c if c == guess
       end
     else
-      @guessed_letters['wrong'] << guess
+      @guessed_letters[:wrong] << guess
       @guesses -= 1
     end
   end
@@ -112,24 +112,6 @@ class Hangman
     else
       false
     end
-  end
-
-  def load_game; end
-
-  def save_game()
-    filename = "#{@word_array.join}_game.txt"
-    Dir.mkdir('saved_games') unless File.exist?('saved_games')
-    File.open("saved_games/#{filename}", 'w') { |f| f.write save_to_json}
-    puts goodbye_message(filename)
-  end
-
-  def save_to_json
-    JSON.dump(
-      word: @word,
-      word_array: @word_array,
-      guessed_letters: @guessed_letters,
-      guesses: @guesses
-    )
   end
 end
 

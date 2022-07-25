@@ -1,0 +1,26 @@
+{
+  "word": [
+    "a",
+    "n",
+    "g",
+    "e",
+    "l"
+  ],
+  "word_array": [
+    "a",
+    "_",
+    "g",
+    "_",
+    "_"
+  ],
+  "guessed_letters": {
+    "correct": [
+      "a",
+      "g"
+    ],
+    "wrong": [
+
+    ]
+  },
+  "guesses": 6
+}
