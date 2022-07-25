@@ -20,5 +20,43 @@ module FileManager
     )
   end
 
-  def load_game; end
+  def load_game
+    file_to_load = choose_game
+
+    saved_game = File.open(File.join('saved_games', file_to_load), 'r')
+
+    game = JSON.load(saved_game)
+    @word = game['word']
+    @word_array = game['word_array']
+    @guessed_letters = game['guessed_letters']
+    @guesses = game['guesses']
+    saved_game.close
+
+    print "word: #{@word}\n"
+    print "word_array: #{@word_array}\n"
+    print "guessed_letters: #{@guessed_letters}\n"
+    print "guesses: #{@guesses}\n"
+
+    File.delete("saved_games/#{file_to_load}")
+  end
+
+  def choose_game
+    @files = read_files
+    @files.each_with_index do |file, index|
+      puts "  #{index + 1}: #{file}"
+    end
+    loop do
+      file_index = gets.chomp.to_i
+      return @files[file_index - 1] if file_index.between?(1, @files.size)
+
+      puts choose_file_error
+    end
+  end
+
+  def read_files
+    puts "\n"
+    Dir.entries('saved_games').select do |file|
+      file.include? '.json'
+    end
+  end
 end

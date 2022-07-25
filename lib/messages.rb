@@ -70,4 +70,10 @@ module Messages
       'taken' => "\n  That letter has already been guessed\n"
     }[error]
   end
+
+  def choose_file_error
+    '
+  Please choose a file to load
+    '
+  end
 end

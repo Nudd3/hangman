@@ -30,8 +30,8 @@ class Hangman
   def new_game
     @guesses = 6
     @guessed_letters = {
-      correct: [],
-      wrong: []
+      'correct' => [],
+      'wrong' => []
     }
     choose_word
   end
@@ -42,8 +42,6 @@ class Hangman
       word.length.between?(5, 12)
     end.sample.split(//)
     @word_array = Array.new(@word.length, '_')
-    puts "  #{@word}"
-    puts "  #{@word_array}"
   end
 
   # rubocop:disable Metrics
@@ -80,7 +78,7 @@ class Hangman
   end
 
   def guess_valid?(guess)
-    if @guessed_letters[:correct].include?(guess) || @guessed_letters[:wrong].include?(guess)
+    if @guessed_letters['correct'].include?(guess) || @guessed_letters['wrong'].include?(guess)
       print bad_guess_error('taken')
       return false
     elsif !guess.match(/^[a-z]$/)
@@ -92,12 +90,12 @@ class Hangman
 
   def compare_guess(guess)
     if @word.include?(guess)
-      @guessed_letters[:correct] << guess
+      @guessed_letters['correct'] << guess
       @word.each_with_index do |c, i|
         @word_array[i] = c if c == guess
       end
     else
-      @guessed_letters[:wrong] << guess
+      @guessed_letters['wrong'] << guess
       @guesses -= 1
     end
   end
@@ -108,6 +106,7 @@ class Hangman
       true
     elsif @guesses.zero?
       puts loser_message
+      print @word.join
       true
     else
       false

@@ -11,8 +11,8 @@ module Display
   end
 
   def display_guessed_letters(letters)
-    correct = letters[:correct]
-    wrong = letters[:wrong]
+    correct = letters['correct']
+    wrong = letters['wrong']
     correct.each do |letter|
       print "  #{green(letter)}"
     end
