@@ -6,7 +6,7 @@ module FileManager
   def save_game
     filename = "#{@word_array.join}_game.json"
     Dir.mkdir('saved_games') unless File.exist?('saved_games')
-    File.open("saved_games/#{filename}", 'w') { _1.write save_to_json}
+    File.open("saved_games/#{filename}", 'w') { _1.write save_to_json }
     puts goodbye_message(filename)
   end
 
