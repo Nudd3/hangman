@@ -3,7 +3,6 @@
 # Module containing the methods for saving and loading
 # a game of Hangman
 module FileManager
-
   def save_game
     filename = "#{@word_array.join}_game.json"
     Dir.mkdir('saved_games') unless File.exist?('saved_games')
@@ -32,11 +31,6 @@ module FileManager
     @guesses = game['guesses']
     saved_game.close
 
-    print "word: #{@word}\n"
-    print "word_array: #{@word_array}\n"
-    print "guessed_letters: #{@guessed_letters}\n"
-    print "guesses: #{@guesses}\n"
-
     File.delete("saved_games/#{file_to_load}")
   end
 
@@ -45,6 +39,7 @@ module FileManager
     @files.each_with_index do |file, index|
       puts "  #{index + 1}: #{file}"
     end
+    print "\n  => "
     loop do
       file_index = gets.chomp.to_i
       return @files[file_index - 1] if file_index.between?(1, @files.size)

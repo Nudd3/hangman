@@ -21,11 +21,15 @@ module Display
     end
   end
 
-  def red(letter)
-    "\e[31m#{letter}\e[0m"
+  def red(string)
+    "\e[31m#{string}\e[0m"
   end
 
-  def green(letter)
-    "\e[32m#{letter}\e[0m"
+  def green(string)
+    "\e[32m#{string}\e[0m"
+  end
+
+  def blue(string)
+    "\e[34m#{string}\e[0m"
   end
 end

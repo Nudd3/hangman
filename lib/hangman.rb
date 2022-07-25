@@ -15,11 +15,21 @@ class Hangman
 
   def initialize
     puts welcome_message
-    select_mode == '1' ? new_game : load_game
+    if select_mode == '1'
+      new_game
+    else
+      load_game
+      display_info(@guessed_letters, @word_array)
+    end
+    # select_mode == '1' ? new_game : load_game
     play
   end
 
   def select_mode
+    if Dir.empty? 'saved_games'
+      print no_saved_games_message
+      return '1'
+    end
     loop do
       print promt_mode_selection
       input = gets.chomp
@@ -51,7 +61,7 @@ class Hangman
       if select_turn == '1'
         guess = make_guess
         compare_guess(guess)
-        display_info(guessed_letters, word_array)
+        display_info(@guessed_letters, @word_array)
       else
         save_game
         break
@@ -106,7 +116,6 @@ class Hangman
       true
     elsif @guesses.zero?
       puts loser_message
-      print @word.join
       true
     else
       false

@@ -34,8 +34,14 @@ module Messages
 
   def loser_message
     "
-  \n\nUnfortunately, you didn't manage to figure the word out..
+  \n\n  Unfortunately, you didn't manage to figure the word out..
   The word was:
+  #{blue(@word.join)}"
+  end
+
+  def no_saved_games_message
+    "
+  There are no games saved, a new game is started
     "
   end
 
