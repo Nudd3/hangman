@@ -1,7 +1,7 @@
 # Hangman
 
 ## Introduction
-This is a part of The Odin Project's Full Stack Ruby on Rails Path. This project specifically goes into learning about serialization. 
+This is a part of The Odin Project's Full Stack Ruby on Rails Path. This project specifically goes into learning about serialization. Here it is done using the JSON format.
 The player will have the option of saving a game and later come back and load it back up, and progress will be resumed. 
 
 ## The Game
